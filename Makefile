@@ -16,9 +16,9 @@ install: install-tools
 	@which dep > /dev/null || curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
 	dep ensure -vendor-only
 
-.PHONE: templates
+.PHONY: templates
 templates:
-	esc -pkg templates -o pkg/templates/gen_assets.go -ignore .go -prefix templates templates
+	esc -pkg templates -o pkg/templates/gen_assets.go -ignore .go -prefix templates templates/*
 
 .PHONY: format
 format:
