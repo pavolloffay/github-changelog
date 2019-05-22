@@ -213,7 +213,7 @@ var _escData = map[string]*_escFile{
 		name:    "chrono-list.md",
 		local:   "templates/chrono-list.md",
 		size:    296,
-		modtime: 1558529493,
+		modtime: 1558531006,
 		compressed: `
 H4sIAAAAAAAC/2SOT0sDMRDF7/kUQ/fSiglrD56VivWwFpH1VDxEOm4D+QMxexred5dgags9Je/NvHm/
 jjZHGyf2aVJKJNc/mU0KwZUfQIloct9kRjsRoLqORKowOxuYAFqKtPXT8ziXY8rmyRY2zykHW2ix7vt7
