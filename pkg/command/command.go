@@ -41,13 +41,13 @@ func NewCommand(fce func(otp Opts) error, v *viper.Viper) *cobra.Command {
 func addFlags() *flag.FlagSet {
 	flagSet := new(flag.FlagSet)
 	flagSet.String(
-		repoFlag,
-		"jaeger",
-		"Github repository")
-	flagSet.String(
 		ownerFlag,
 		"jaegertracing",
 		"Github user or organization")
+	flagSet.String(
+		repoFlag,
+		"jaeger-operator",
+		"Github repository")
 	flagSet.String(
 		branchFlag,
 		"master",
