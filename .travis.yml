@@ -30,9 +30,8 @@ jobs:
       env:
       - OPERATOR_VERSION="${TRAVIS_BRANCH}"
       install:
-      - make install
       script:
-      - make build
+      - make install && make build
       provider: releases
       api_key:
         secure: "JNoPrIDJhGT5g3J0X+6t00NAPRotzKrdhntK1fPaQmtn/7iL8/vKZ+81x2Fzo27vLFgC/y6Xjj3wqsV5u6sSY8v7fbSWm49sTHr/Hr1QNU/RSIb5EWqySnPpiWlZbsBZ8YYvFFLtu3Dh8FYa+KKNP9ScRsn9cxNJra5Fbnb8lirpkrD4TcgDg4r9V6JqeyXyMDjwLeBZwMuYAGQkJ+82/uIefeM5Bw1+B6oYJwtsLY49m5EGjVl/x2Jn/HSOlY6TgVGDTNWm1Y+WpGojLMx4HNFz5+LA7MEJr4QKYnndBUIFpQZ3iL0Qe4Z6L0WlEMSnXMBvDPvJDzDF3cGZy2WbdECU1Y5ZToBrpK8vjApNdNoLLnKvwdZnj2cABlv++TutXh7h94rdQRz+u9DgcNUlKdVrb+BJpnUObYg8bb5lXpQR6/SZD0tRXyswrCevH6OUgjBillPtU9Be2TCyPI4LwDXgdseUhs0N9JCeHehkM5SIxrqYeu3hsH0wES5FKFPgRomV/PJvTuDdYKXranV8ohxjFm/VzST/tPq95e8VGIi7h0sQjqX8nB6bDlU8BJi+2poEfmlNt7+nqJYxkTEQbQpgFezDbzkhgChAdsRnBtwCP7/oFqQ5ZG4wem+saN3Tb4Xi3iCSAWILLooHg+MrWx4NgJE1e02hXEWI6qY2Ogw="
