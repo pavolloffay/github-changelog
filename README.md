@@ -10,25 +10,20 @@ Github requires OAUTH token to access its API. [Generate a token here.](https://
 
 The executable can be downloaded from Github releases page.
 ```bash
-gch -h
-gch --oauth-token <github-oauth-token> --repo jaeger-operator
-gch --oauth-token <github-oauth-token> --repo jaeger-operator --template ./templates/chrono-list.md
+docker run --rm  pavolloffay/gch:latest --oauth-token <github-oauth-token>
+# the binary is in /app folder in the docker image
+docker run --rm  -v "${PWD}:/app" pavolloffay/gch:latest --oauth-token <github-oauth-token> --template /app/templates/chrono-list.md
 ```
 
 The binary contains predefined templates directly in the executable, however `--template` flag
 can be used to supply any template. The `main.go` contains a definition of objects which is passed to 
 the template. It is basically a list of commits with attached labels and pull requests and tags.
 
-
-Or run via docker:
-```bash
-docker run --rm  pavolloffay/gch:latest --oauth-token <github-oauth-token>
-```
-
 ## Develop
 
 ```bash
 make build
+./buld/gch
 ```
 
 ## License
