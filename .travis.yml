@@ -29,6 +29,8 @@ jobs:
       name: "Release"
       env:
       - OPERATOR_VERSION="${TRAVIS_BRANCH}"
+      install:
+      - make install
       script:
       - make build
       provider: releases
