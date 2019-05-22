@@ -26,13 +26,6 @@ jobs:
       - make build
 
     - stage: deploy
-      name: "Publish release"
-      env:
-      - OPERATOR_VERSION="${TRAVIS_BRANCH}"
-      script:
-      - "./.travis/publish-images.sh"
-
-    - stage: deploy
       name: "Release"
       env:
       - OPERATOR_VERSION="${TRAVIS_BRANCH}"
