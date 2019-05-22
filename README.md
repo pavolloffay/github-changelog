@@ -1,3 +1,5 @@
+[![Build Status][ci-img]][ci] 
+
 # Github changelog generator
 
 This command line utility generates changelog for a Github repository.
@@ -21,3 +23,11 @@ the template. It is basically a list of commits with attached labels and pull re
 ```bash
 make build
 ```
+
+## License
+
+[Apache 2.0 License](./LICENSE).
+
+
+[ci-img]: https://travis-ci.org/pavolloffay/github-changelog.svg?branch=master
+[ci]: https://travis-ci.org/pavolloffay/github-changelog
