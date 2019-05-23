@@ -2,6 +2,7 @@ package command
 
 import (
 	"flag"
+	"fmt"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -14,6 +15,10 @@ const (
 	branchFlag     = "branch"
 	templateFlag   = "template"
 	logLevelFlag   = "log-level"
+)
+
+var (
+	compiledTemplates = []string{"/chrono-list.md", "/all-labels.md"}
 )
 
 type Opts struct {
@@ -58,8 +63,8 @@ func addFlags() *flag.FlagSet {
 		"Github OAUTH token")
 	flagSet.String(
 		templateFlag,
-		"/chrono-list.md",
-		"Template name")
+		compiledTemplates[0],
+		fmt.Sprintf("Template name. Templates %v are compiled inside the binary", compiledTemplates))
 	flagSet.String(
 		logLevelFlag,
 		"info",
