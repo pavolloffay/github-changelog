@@ -239,7 +239,7 @@ SJOLLXU1PMf/4XSj43gA1G8AAAD//+lq5GEoAQAA
 		name:    "default-labels.md",
 		local:   "templates/default-labels.md",
 		size:    1113,
-		modtime: 1558610699,
+		modtime: 1558613150,
 		compressed: `
 H4sIAAAAAAAC/+RSwUoDMRC95yuGZg+70uYDBEFbih7WIrKeioesO80Gs1nYJroS5t8l0dIVD723t8yb
 95j3wuOwaqVVaHrFWAhDfIOopNoTsRAWoHdpBCLGOYQQB7GRHUIiANoGFkSMcc5hbVtp37BD6/Zx+ald

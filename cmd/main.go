@@ -15,29 +15,6 @@ import (
 	"github.com/pavolloffay/github-changelog/pkg/templates"
 )
 
-// TemplateData holds data passed to golang template.
-type TemplateData struct {
-	Commits []CommitBundle
-	Tags    []TagBundle
-}
-
-// CommitBundle holds data associated with a commit.
-type CommitBundle struct {
-	Commit *github.RepositoryCommit
-	Pull   *github.PullRequest
-	Tag    *github.RepositoryTag
-	Labels map[string]bool
-}
-
-// TagBundle holds a tag and commits associated with the tag.
-// The commits are split per label(of associated PR).
-// No labeled commits are added to a separate list.
-type TagBundle struct {
-	Labeled   map[string][]CommitBundle
-	NoLabeled []CommitBundle
-	Tag       *github.RepositoryTag
-}
-
 func main() {
 	v := viper.New()
 	v.AutomaticEnv()
@@ -91,7 +68,7 @@ func run(opts command.Opts) error {
 		}
 	}
 
-	var commitBundle []CommitBundle
+	var commitBundle []templates.CommitBundle
 	for _, commit := range commits {
 		pull := shaPullMap[*commit.SHA]
 		labels := map[string]bool{}
@@ -100,7 +77,7 @@ func run(opts command.Opts) error {
 				labels[*label.Name] = true
 			}
 		}
-		commitBundle = append(commitBundle, CommitBundle{
+		commitBundle = append(commitBundle, templates.CommitBundle{
 			Commit: commit,
 			Pull:   pull,
 			Tag:    shaTagMap[*commit.SHA],
@@ -108,11 +85,11 @@ func run(opts command.Opts) error {
 		})
 	}
 
-	var tagBundle []TagBundle
+	var tagBundle []templates.TagBundle
 	for _, commit := range commitBundle {
-		var t *TagBundle
+		var t *templates.TagBundle
 		if commit.Tag != nil || len(tagBundle) == 0 {
-			t = &TagBundle{Tag: commit.Tag, Labeled: map[string][]CommitBundle{}}
+			t = &templates.TagBundle{Tag: commit.Tag, Labeled: map[string][]templates.CommitBundle{}}
 			tagBundle = append(tagBundle, *t)
 		} else {
 			t = &tagBundle[len(tagBundle)-1]
@@ -126,10 +103,10 @@ func run(opts command.Opts) error {
 			}
 		}
 	}
-	return generateOutput(opts.Template, &TemplateData{Commits: commitBundle, Tags: tagBundle})
+	return generateOutput(opts.Template, &templates.TemplateData{Commits: commitBundle, Tags: tagBundle})
 }
 
-func generateOutput(templateName string, data *TemplateData) error {
+func generateOutput(templateName string, data *templates.TemplateData) error {
 	fileContent, err := templates.FSString(false, templateName)
 	if err != nil {
 		all, err := ioutil.ReadFile(templateName)
