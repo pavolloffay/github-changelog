@@ -18,7 +18,7 @@ const (
 )
 
 var (
-	compiledTemplates = []string{"/chrono-list.md", "/all-labels.md"}
+	compiledTemplates = []string{"/chrono-list.md", "/all-labels.md", "default-labels.md"}
 )
 
 type Opts struct {
