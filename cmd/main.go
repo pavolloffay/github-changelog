@@ -6,6 +6,7 @@ import (
 	"strings"
 	"text/template"
 
+	"github.com/Masterminds/sprig"
 	"github.com/google/go-github/github"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
@@ -115,7 +116,7 @@ func generateOutput(templateName string, data *templates.TemplateData) error {
 		}
 		fileContent = string(all)
 	}
-	t, err := template.New(templateName).Parse(fileContent)
+	t, err := template.New(templateName).Funcs(sprig.TxtFuncMap()).Parse(fileContent)
 	if err != nil {
 		return err
 	}
