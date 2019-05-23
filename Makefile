@@ -38,3 +38,9 @@ build: templates format
 	@echo Building...
 	@${GO_FLAGS} go build -o $(OUTPUT_BINARY) ./cmd/main.go
 
+.PHONY: examples
+examples:
+	@echo define OAUTH_TOKEN env variable before running this
+	go run ./cmd/main.go --template /chrono-list.md > ./examples/chrono-list.md
+	go run ./cmd/main.go --template /default-labels.md > ./examples/default-labels.md
+

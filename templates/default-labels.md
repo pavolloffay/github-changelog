@@ -5,7 +5,7 @@
 ## {{.Tag.Name }}
 {{ end -}}
 
-### Enhancements
+### New features
 {{ with $x := (index .Labeled "enhancement") }}{{range $key, $value := $x }}
 {{- if .Pull -}}
 * {{.Pull.Title }} ([#{{.Pull.GetNumber}}]({{.Pull.GetHTMLURL}}), [@{{.Commit.Author.GetLogin}}]({{.Commit.Author.GetHTMLURL}}))
@@ -19,7 +19,7 @@
 {{end}}
 {{ end -}}
 
-### Bug fixes
+### Bug fixes, Minor improvements
 {{ with $x := (index .Labeled "bug") }}{{range $key, $value := $x }}
 {{- if .Pull -}}
 * {{.Pull.Title }} ([#{{.Pull.GetNumber}}]({{.Pull.GetHTMLURL}}), [@{{.Commit.Author.GetLogin}}]({{.Commit.Author.GetHTMLURL}}))

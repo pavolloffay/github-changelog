@@ -1,7 +1,6 @@
 [![Build Status][ci-img]][ci] 
 
 # Github changelog generator
-
 This command line utility generates changelog for a Github repository.
 The changelog generation is fully customizable via golang [templates](https://golang.org/pkg/text/template/).
 
@@ -15,9 +14,17 @@ docker run --rm  pavolloffay/gch:latest --oauth-token <github-oauth-token>
 docker run --rm  -v "${PWD}:/app" pavolloffay/gch:latest --oauth-token <github-oauth-token> --template /app/templates/chrono-list.md
 ```
 
+Examples can be found in [examples](./examples) directory.
+
+### Templates
 The binary contains predefined templates directly in the executable, however `--template` flag
-can be used to supply any template. The `main.go` contains a definition of objects which is passed to 
-the template. It is basically a list of commits with attached labels and pull requests and tags.
+can be used to supply any template.
+
+* `chrono-list.md` - Chronologically order list of all pull requests split into tags.
+* `all-labels.md` - Pull requests are split into labels, unlabeled commits are in a separate category.
+* `default-labels.md` - Pull requests are split into bugs and enhancements.
+
+The templates splitting pull requests into categories require proper labeling.
 
 ## Writing a custom template
 Template uses golang [template](https://golang.org/pkg/text/template/) language to render the data.
