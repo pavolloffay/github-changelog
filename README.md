@@ -19,6 +19,16 @@ The binary contains predefined templates directly in the executable, however `--
 can be used to supply any template. The `main.go` contains a definition of objects which is passed to 
 the template. It is basically a list of commits with attached labels and pull requests and tags.
 
+## Writing a custom template
+Template uses golang [template](https://golang.org/pkg/text/template/) language to render the data.
+The default examples can be found in [templates](./templates) directory and these are also compiled
+into the binary. The object passed to the template is `TemplateData` defined in [pkg/templates/model.go](./pkg/templates/model.go).
+The struct uses objects from [go-github](https://github.com/google/go-github) which are exposed in the templates.
+
+```go
+go run ./cmd/main.go --template <your-template>
+```
+
 ## Develop
 
 ```bash
