@@ -5,7 +5,9 @@ PACKAGES := $(shell go list ./cmd/... ./pkg/...)
 BINARY_NAME ?= gch
 BIN_DIR ?= "build/"
 OUTPUT_BINARY ?= "$(BIN_DIR)/$(BINARY_NAME)"
-GO_FLAGS ?= GOOS=linux GOARCH=amd64 CGO_ENABLED=0
+
+GOOS ?= $(shell uname -s | awk '{print tolower($$0)}')
+GO_FLAGS ?= GOOS=$(GOOS) GOARCH=amd64 CGO_ENABLED=0
 
 .PHONY: install-tools
 install-tools:
